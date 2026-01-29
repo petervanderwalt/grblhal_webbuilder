@@ -2205,6 +2205,13 @@ function loadBoard (driver, opts, result)
 
 	opts.symbols.forEach(value => { symbols.push(value) } );
 
+  var al = {};
+  symbols.forEach(symbol => {
+    var d = symbol.split('=');
+    if(d[0].endsWith('_LETTER'))
+      al[d[0]] = d[1];
+  });
+
 	if(result) {
 
 		var ok = false, has_eeprom = false, eeprom_new_size = 0, eeprom_index = 0;
@@ -2224,12 +2231,7 @@ function loadBoard (driver, opts, result)
 		if(!symbols.includes('PROBE_ENABLE=1'))
 			symbols.push('PROBE_ENABLE=0');
 
-		var al = {};
-		symbols.forEach(symbol => {
-			var d = symbol.split('=');
-			if(d[0].endsWith('_LETTER'))
-				al[d[0]] = d[1];
-		});
+
 
 		symbols.forEach((key, index) => {
 			switch(key.split('=')[0]) {
