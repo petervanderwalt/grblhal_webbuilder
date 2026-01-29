@@ -2458,7 +2458,8 @@ console.log('----------');
     generateEnable(false);
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', window.location.origin + '/builder' + build.docker_instance);
+    //xhr.open('POST', window.location.origin + '/builder' + build.docker_instance);
+    xhr.open('POST', 'https://svn.io-engineering.com:8443/builder' + build.docker_instance);
     xhr.responseType = 'blob';
     xhr.setRequestHeader('Accept', 'application/octet-stream');
     xhr.setRequestHeader('Content-Type', 'application/json');
