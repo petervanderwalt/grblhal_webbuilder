@@ -2462,7 +2462,8 @@ console.log('----------');
     xhr.open('POST', 'https://svn.io-engineering.com:8443/builder' + build.docker_instance);
     xhr.responseType = 'blob';
     xhr.setRequestHeader('Accept', 'application/octet-stream');
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    //xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Content-Type', 'text/plain'); // Bypasses the preflight CORS check
     xhr.timeout = 5 * 60 * 1000;
     xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
